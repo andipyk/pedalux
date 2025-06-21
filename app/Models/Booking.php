@@ -11,6 +11,7 @@ class Booking extends Model
 
     protected $fillable = [
         'student_id',
+        'course_package_id',
         'booking_date',
         'total_amount',
         'booking_status',
@@ -24,5 +25,15 @@ class Booking extends Model
     public function student()
     {
         return $this->belongsTo(Student::class);
+    }
+
+    public function coursePackage()
+    {
+        return $this->belongsTo(CoursePackage::class);
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
     }
 }

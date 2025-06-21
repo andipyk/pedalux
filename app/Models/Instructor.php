@@ -23,8 +23,8 @@ class Instructor extends Model
         return $this->hasMany(Schedule::class);
     }
 
-    // public function testimonials()
-    // {
-    //     return $this->hasMany(Testimonial::class);
-    // }   
+    public function testimonials()
+    {
+        return $this->hasMany(Testimonial::class);
+    }   
 }

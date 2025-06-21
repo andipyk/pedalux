@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-           $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->date('booking_date');
             $table->double('total_amount');
             $table->enum('booking_status', ['pending_payment', 'confirmed', 'cancelled'])->default('pending_payment');

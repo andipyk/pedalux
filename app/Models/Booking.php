@@ -9,6 +9,19 @@ class Booking extends Model
 {
     use HasFactory;
 
+    const STATUS_PENDING_PAYMENT = 'pending_payment';
+    const STATUS_CONFIRMED = 'confirmed';
+    const STATUS_CANCELLED = 'cancelled';
+
+    public static function getStatuses(): array
+    {
+        return [
+            self::STATUS_PENDING_PAYMENT,
+            self::STATUS_CONFIRMED,
+            self::STATUS_CANCELLED,
+        ];
+    }
+
     protected $fillable = [
         'student_id',
         'course_package_id',
@@ -17,7 +30,7 @@ class Booking extends Model
         'booking_status',
     ];
 
-    public function schedule()
+    public function schedules()
     {
         return $this->hasMany(Schedule::class);
     }
@@ -32,7 +45,7 @@ class Booking extends Model
         return $this->belongsTo(CoursePackage::class);
     }
 
-    public function payment()
+    public function payments()
     {
         return $this->hasOne(Payment::class);
     }

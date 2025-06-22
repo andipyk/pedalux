@@ -18,7 +18,11 @@ class BookingSeeder extends Seeder
         $students = Student::all();
         $packages = CoursePackage::all();
         $instructors = Instructor::all();
-        $cars = Car::where('status', 'Available')->get();
+        $cars = Car::where('status', Car::STATUS_AVAILABLE)->get();
+
+        if ($cars->isEmpty() || $packages->isEmpty() || $instructors->isEmpty()) {
+            throw new \RuntimeException('Required data is missing. Please ensure cars, course packages, and instructors are seeded first.');
+        }
 
         foreach ($students as $student) {
             // Assume each student makes one booking

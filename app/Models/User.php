@@ -15,6 +15,19 @@ class User extends Authenticatable implements FilamentUser
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    const ROLE_ADMIN = 'admin';
+    const ROLE_INSTRUCTOR = 'instructor';
+    const ROLE_STUDENT = 'student';
+
+    public static function getRoles(): array
+    {
+        return [
+            self::ROLE_ADMIN,
+            self::ROLE_INSTRUCTOR,
+            self::ROLE_STUDENT,
+        ];
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +38,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'phone_number',
         'password',
+        'role',
     ];
 
     /**
@@ -52,6 +66,6 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->role === 'admin';
+        return $this->role === self::ROLE_ADMIN;
     }
 }

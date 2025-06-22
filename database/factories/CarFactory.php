@@ -10,8 +10,8 @@ class CarFactory extends Factory
     {
         return [
             'license_plate' => fake()->bothify('B #### ???'),
-            'transmission_type' => fake()->randomElement(['Manual', 'Automatic']),
-            'status' => 'Available',
+            'transmission_type' => fake()->randomElement(['manual', 'automatic']),
+            'status' => 'available',
         ];
     }
 }

@@ -9,6 +9,21 @@ class Student extends Model
 {
     use HasFactory;
 
+    const PROGRESS_BEGINNER = 'beginner';
+    const PROGRESS_INTERMEDIATE = 'intermediate';
+    const PROGRESS_ADVANCED = 'advanced';
+    const PROGRESS_COMPLETED = 'completed';
+
+    public static function getLearningProgresses(): array
+    {
+        return [
+            self::PROGRESS_BEGINNER,
+            self::PROGRESS_INTERMEDIATE,
+            self::PROGRESS_ADVANCED,
+            self::PROGRESS_COMPLETED,
+        ];
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -9,6 +9,17 @@ class Schedule extends Model
 {
     use HasFactory;
 
+    const STATUS_AVAILABLE = 'available';
+    const STATUS_BOOKED = 'booked';
+
+    public static function getStatuses(): array
+    {
+        return [
+            self::STATUS_AVAILABLE,
+            self::STATUS_BOOKED,
+        ];
+    }
+
     protected $fillable = [
         'instructor_id',
         'booking_id',

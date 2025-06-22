@@ -16,18 +16,18 @@ class UserSeeder extends Seeder
         $admin = User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
-            'role' => 'admin',
+            'role' => User::ROLE_ADMIN,
             'password' => bcrypt('password'),
         ]);
         Admin::factory()->create(['user_id' => $admin->id]);
 
         // 2. Create 5 Instructor Accounts
-        User::factory(5)->create(['role' => 'instructor'])->each(function ($user) {
+        User::factory(5)->create(['role' => User::ROLE_INSTRUCTOR])->each(function ($user) {
             Instructor::factory()->create(['user_id' => $user->id]);
         });
 
         // 3. Create 20 Student Accounts
-        User::factory(20)->create(['role' => 'student'])->each(function ($user) {
+        User::factory(20)->create(['role' => User::ROLE_STUDENT])->each(function ($user) {
             Student::factory()->create(['user_id' => $user->id]);
         });
     }

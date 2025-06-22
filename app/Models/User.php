@@ -22,9 +22,9 @@ class User extends Authenticatable implements FilamentUser
     public static function getRoles(): array
     {
         return [
-            self::ROLE_ADMIN,
-            self::ROLE_INSTRUCTOR,
-            self::ROLE_STUDENT,
+            self::ROLE_ADMIN => 'admin',
+            self::ROLE_INSTRUCTOR => 'instructor',
+            self::ROLE_STUDENT => 'student',
         ];
     }
 

@@ -19,17 +19,17 @@ class Car extends Model
     public static function getTransmissionTypes(): array
     {
         return [
-            self::TRANSMISSION_MANUAL,
-            self::TRANSMISSION_AUTOMATIC,
+            self::TRANSMISSION_MANUAL => 'manual',
+            self::TRANSMISSION_AUTOMATIC => 'automatic',
         ];
     }
 
     public static function getStatuses(): array
     {
         return [
-            self::STATUS_AVAILABLE,
-            self::STATUS_IN_USE,
-            self::STATUS_MAINTENANCE,
+            self::STATUS_AVAILABLE => 'available',
+            self::STATUS_IN_USE => 'in_use',
+            self::STATUS_MAINTENANCE => 'maintenance',
         ];
     }
     

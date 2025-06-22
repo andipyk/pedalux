@@ -16,9 +16,9 @@ class Booking extends Model
     public static function getStatuses(): array
     {
         return [
-            self::STATUS_PENDING_PAYMENT,
-            self::STATUS_CONFIRMED,
-            self::STATUS_CANCELLED,
+            self::STATUS_PENDING_PAYMENT => 'pending_payment',
+            self::STATUS_CONFIRMED => 'confirmed',
+            self::STATUS_CANCELLED => 'cancelled',
         ];
     }
 

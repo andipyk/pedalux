@@ -22,20 +22,20 @@ class Payment extends Model
     public static function getStatuses(): array
     {
         return [
-            self::STATUS_PENDING,
-            self::STATUS_PAID,
-            self::STATUS_FAILED,
-            self::STATUS_REFUNDED,
+            self::STATUS_PENDING => 'pending',
+            self::STATUS_PAID => 'paid',
+            self::STATUS_FAILED => 'failed',
+            self::STATUS_REFUNDED => 'refunded',
         ];
     }
 
     public static function getMethods(): array
     {
         return [
-            self::METHOD_CASH,
-            self::METHOD_TRANSFER,
-            self::METHOD_CREDIT_CARD,
-            self::METHOD_DEBIT_CARD,
+            self::METHOD_CASH => 'cash',
+            self::METHOD_TRANSFER => 'transfer',
+            self::METHOD_CREDIT_CARD => 'credit_card',
+            self::METHOD_DEBIT_CARD => 'debit_card',
         ];
     }
 

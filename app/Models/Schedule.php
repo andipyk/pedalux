@@ -15,8 +15,8 @@ class Schedule extends Model
     public static function getStatuses(): array
     {
         return [
-            self::STATUS_AVAILABLE,
-            self::STATUS_BOOKED,
+            self::STATUS_AVAILABLE => 'available',
+            self::STATUS_BOOKED => 'booked',
         ];
     }
 

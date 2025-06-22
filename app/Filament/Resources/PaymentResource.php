@@ -28,11 +28,11 @@ class PaymentResource extends Resource
                     ->required()
                     ->live(),
                 Forms\Components\Select::make('payment_method')
-                    ->options(Payment::getMethods())
+                    ->options(collect(Payment::getMethods())->mapWithKeys(fn ($method) => [$method => ucfirst(str_replace('_', ' ', $method))]))
                     ->required()
                     ->live(),
                 Forms\Components\Select::make('payment_status')
-                    ->options(Payment::getStatuses())
+                    ->options(collect(Payment::getStatuses())->mapWithKeys(fn ($method) => [$method => ucfirst(str_replace('_', ' ', $method))]))
                     ->required()
                     ->live(),
                 Forms\Components\DateTimePicker::make('payment_timestamp')

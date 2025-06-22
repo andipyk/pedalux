@@ -17,10 +17,10 @@ class Student extends Model
     public static function getLearningProgresses(): array
     {
         return [
-            self::PROGRESS_BEGINNER,
-            self::PROGRESS_INTERMEDIATE,
-            self::PROGRESS_ADVANCED,
-            self::PROGRESS_COMPLETED,
+            self::PROGRESS_BEGINNER => 'beginner',
+            self::PROGRESS_INTERMEDIATE => 'intermediate',
+            self::PROGRESS_ADVANCED => 'advanced',
+            self::PROGRESS_COMPLETED => 'completed',
         ];
     }
 

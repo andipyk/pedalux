@@ -5,6 +5,8 @@ namespace App\Filament\Resources\InstructorResource\Pages;
 use App\Filament\Resources\InstructorResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class EditInstructor extends EditRecord
 {
@@ -17,9 +19,25 @@ class EditInstructor extends EditRecord
         ];
     }
 
-    protected function mutateFormDataBeforeSave(array $data): array
+    protected function mutateFormDataBeforeFill(array $data): array
     {
+        $user_data = $this->record->user->toArray();
+        $data['user'] = $user_data;
+
         return $data;
+    }
+
+    protected function handleRecordUpdate(Model $record, array $data): Model
+    {
+        $userData = Arr::pull($data, 'user');
+        $record->update($data);
+        $user = $record->user;
+
+        if ($user) {
+            $user->update($userData);
+        }
+
+        return $record;
     }
 
     protected function afterSave(): void

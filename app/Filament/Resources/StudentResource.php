@@ -54,7 +54,7 @@ class StudentResource extends Resource
                     }),
                 Forms\Components\TextInput::make('user.password')
                     ->password()
-                    ->required(fn (string $context): bool => $context === 'create')
+                    ->required(fn(string $context): bool => $context === 'create')
                     ->maxLength(255)
                     ->hiddenOn('edit'),
                 Forms\Components\Hidden::make('user.role')
@@ -89,7 +89,7 @@ class StudentResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('learning_progress')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         Student::PROGRESS_BEGINNER => 'info',
                         Student::PROGRESS_INTERMEDIATE => 'warning',
                         Student::PROGRESS_ADVANCED => 'success',

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\BookingResource\Pages;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Models\Booking;
+use App\Models\Student;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -22,7 +23,8 @@ class BookingResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('student_id')
-                    ->relationship('student.user', 'name')
+                    ->label('Student')
+                    ->options(Student::all()->pluck('user.name', 'id'))
                     ->searchable()
                     ->preload()
                     ->required(),
@@ -63,7 +65,7 @@ class BookingResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('booking_status')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         Booking::STATUS_PENDING_PAYMENT => 'warning',
                         Booking::STATUS_CONFIRMED => 'success',
                         Booking::STATUS_CANCELLED => 'danger',
